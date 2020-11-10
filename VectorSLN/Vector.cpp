@@ -1,4 +1,4 @@
-#include "Vector.h"
+п»ї#include "Vector.h"
 #include <string>
 
 Vector::Vector(double* Coords, unsigned int CoordsCount)
@@ -106,7 +106,7 @@ Vector operator*(Vector leftOperand, double rightOperand)
     return rightOperand * leftOperand;
 }
 
-// скалярное произведение
+// СЃРєР°Р»СЏСЂРЅРѕРµ РїСЂРѕРёР·РІРµРґРµРЅРёРµ
 double operator*(Vector leftOperand, Vector rightOperand)
 {
     double result = 0.0;
@@ -117,16 +117,16 @@ double operator*(Vector leftOperand, Vector rightOperand)
     return result;
 }
 
-// TODO: векторное произведение
+// TODO: РІРµРєС‚РѕСЂРЅРѕРµ РїСЂРѕРёР·РІРµРґРµРЅРёРµ
 Vector operator&(Vector leftOperand, Vector rightOperand)
 {
     return Vector();
 }
 
-// По определению:
-// Два вектора называются равными тогда и только тогда, когда:
-// 1) Они имеют одинаковое число координат
-// 2) Соответствующие координаты равны между собой.
+// РџРѕ РѕРїСЂРµРґРµР»РµРЅРёСЋ:
+// Р”РІР° РІРµРєС‚РѕСЂР° РЅР°Р·С‹РІР°СЋС‚СЃСЏ СЂР°РІРЅС‹РјРё С‚РѕРіРґР° Рё С‚РѕР»СЊРєРѕ С‚РѕРіРґР°, РєРѕРіРґР°:
+// 1) РћРЅРё РёРјРµСЋС‚ РѕРґРёРЅР°РєРѕРІРѕРµ С‡РёСЃР»Рѕ РєРѕРѕСЂРґРёРЅР°С‚
+// 2) РЎРѕРѕС‚РІРµС‚СЃС‚РІСѓСЋС‰РёРµ РєРѕРѕСЂРґРёРЅР°С‚С‹ СЂР°РІРЅС‹ РјРµР¶РґСѓ СЃРѕР±РѕР№.
 bool operator==(Vector leftOperand, Vector rightOperand)
 {
     if (leftOperand.CoordsCount != rightOperand.CoordsCount) {

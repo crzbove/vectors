@@ -1,4 +1,4 @@
-#pragma once
+п»ї#pragma once
 #include <iostream>
 
 struct Point {
@@ -28,24 +28,24 @@ public:
 	friend Vector operator* (double leftOperand, Vector rightOperand);
 	friend Vector operator* (Vector leftOperand, double rightOperand);
 
-	// скалярное произведение
+	// СЃРєР°Р»СЏСЂРЅРѕРµ РїСЂРѕРёР·РІРµРґРµРЅРёРµ
 	friend double operator* (Vector leftOperand, Vector rightOperand);
 
-	// векторное произведение
+	// РІРµРєС‚РѕСЂРЅРѕРµ РїСЂРѕРёР·РІРµРґРµРЅРёРµ
 	friend Vector operator& (Vector leftOperand, Vector rightOperand);
 
-	// проверка равенства строго по определению (см Vector.cpp)
+	// РїСЂРѕРІРµСЂРєР° СЂР°РІРµРЅСЃС‚РІР° СЃС‚СЂРѕРіРѕ РїРѕ РѕРїСЂРµРґРµР»РµРЅРёСЋ (СЃРј Vector.cpp)
 	friend bool operator== (Vector leftOperand, Vector rightOperand);
 
-	// проверка по длине
+	// РїСЂРѕРІРµСЂРєР° РїРѕ РґР»РёРЅРµ
 	friend bool operator> (Vector leftOperand, Vector rightOperand);
 
-	// проверка по длине
+	// РїСЂРѕРІРµСЂРєР° РїРѕ РґР»РёРЅРµ
 	friend bool operator>= (Vector leftOperand, Vector rightOperand);
 
-	// проверка по длине
+	// РїСЂРѕРІРµСЂРєР° РїРѕ РґР»РёРЅРµ
 	friend bool operator< (Vector leftOperand, Vector rightOperand);
 
-	// проверка по длине
+	// РїСЂРѕРІРµСЂРєР° РїРѕ РґР»РёРЅРµ
 	friend bool operator<= (Vector leftOperand, Vector rightOperand);
 };
