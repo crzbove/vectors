@@ -338,3 +338,6 @@ ASALocalRun/
 
 # BeatPulse healthcheck temp database
 healthchecksdb
+/vectors/vectors.vcxproj.filters
+/vectors/vectors.vcxproj
+/vectors.sln
