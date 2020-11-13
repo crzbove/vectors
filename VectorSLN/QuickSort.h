@@ -1,9 +1,9 @@
-#pragma once
+п»ї#pragma once
 
 /// <summary>
-/// Быстрая сортировка
+/// Р‘С‹СЃС‚СЂР°СЏ СЃРѕСЂС‚РёСЂРѕРІРєР°
 /// </summary>
-/// <typeparam name="T">Тип элементов сортируемого массива</typeparam>
-/// <param name="array">Указатель на массив сортируемых элементов</param>
-/// <param name="length">Длина сортируемого массива</param>
+/// <typeparam name="T">РўРёРї СЌР»РµРјРµРЅС‚РѕРІ СЃРѕСЂС‚РёСЂСѓРµРјРѕРіРѕ РјР°СЃСЃРёРІР°</typeparam>
+/// <param name="array">РЈРєР°Р·Р°С‚РµР»СЊ РЅР° РјР°СЃСЃРёРІ СЃРѕСЂС‚РёСЂСѓРµРјС‹С… СЌР»РµРјРµРЅС‚РѕРІ</param>
+/// <param name="length">Р”Р»РёРЅР° СЃРѕСЂС‚РёСЂСѓРµРјРѕРіРѕ РјР°СЃСЃРёРІР°</param>
 template <typename T> void QuickSort(T* array, int length);
