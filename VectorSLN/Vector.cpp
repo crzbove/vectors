@@ -116,15 +116,21 @@ bool Vector::IsOrtogonalTo(Vector another)
 	return *this * another == 0;
 }
 
-// TODO: Проверка компланарности
-bool Vector::IsComplanarTo(Vector another)
-{
-	return false;
-}
-
 double Vector::FindCOSBetweenThisAnd(Vector another)
 {
 	return (*this * another) / (this->GetLength() * another.GetLength());
+}
+
+// Проверка компланарности векторов
+bool Vector::CheckVectorsCoplanarity(Vector a, Vector b, Vector c)
+{
+	return VectorsMixedProduct(a, b, c) == 0;
+}
+
+// Смешанное произведение
+double Vector::VectorsMixedProduct(Vector a, Vector b, Vector c)
+{
+	return a * (b & c);
 }
 
 Vector operator+(Vector leftOperand, Vector rightOperand)

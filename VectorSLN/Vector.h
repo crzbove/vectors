@@ -6,6 +6,8 @@ struct Point {
 	double* PointCoords;
 };
 
+// TODO: замена ToString() на operator <<
+
 class Vector
 {
 protected:
@@ -19,17 +21,16 @@ public:
 	Vector(Point, Point);
 	std::string ToString();
 
-	// TODO: смешанное произведение
-
 	double GetLength();
 
 	bool IsCollinearTo(Vector another);
 	bool IsCodirectedTo(Vector another);
 	bool IsOrtogonalTo(Vector another);
-	bool IsComplanarTo(Vector another);
 
 	double FindCOSBetweenThisAnd(Vector another);
-	
+	static bool CheckVectorsCoplanarity(Vector a, Vector b, Vector c);
+	static double VectorsMixedProduct(Vector a, Vector b, Vector c);
+
 	friend Vector operator+ (Vector leftOperand, Vector rightOperand);
 	friend Vector operator- (Vector leftOperand, Vector rightOperand);
 	friend Vector operator* (double leftOperand, Vector rightOperand);
