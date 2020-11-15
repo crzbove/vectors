@@ -11,6 +11,8 @@ class Vector
 protected:
 	double* Coords = nullptr;
 	unsigned int CoordsCount = 0;
+	// нахождение определителя матрицы
+	static double FindMatrixDeterminant(double** mainMatrix, int size);
 public:
 	Vector();
 	Vector(double*, unsigned int);
@@ -53,8 +55,4 @@ public:
 
 	// проверка по длине
 	friend bool operator<= (Vector leftOperand, Vector rightOperand);
-
-
-	// нахождение определителя матрицы
-	double FindMatrixDeterminant(double** mainMatrix, int size);
 };

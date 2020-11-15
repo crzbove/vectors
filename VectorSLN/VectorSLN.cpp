@@ -7,8 +7,6 @@ int main() {
 	setlocale(LC_ALL, "Russian");
 
 	int size = 0, userChoice = -1, count = 0;
-
-
 	Point* points = new Point[2];
 
 	cout << "Введите размерность вектора: ";
@@ -28,11 +26,9 @@ int main() {
 
 		switch (userChoice) {
 		case 1:
-
-
 			for (size_t p = 0; p < 2; p++)
 			{
-				//double* coords = new double[size];
+				coords = new double[size];
 				for (size_t s = 0; s < size; s++)
 				{
 					cout << "Введите " << s + 1 << "-ю координату " << p + 1 << " точки: ";
@@ -84,6 +80,7 @@ int main() {
 	cout << "Первый вектор, умноженный на 3.55: " << (3.55 * vectors[0]).ToString() << " ?== " << (vectors[0] * 3.55).ToString() << "\n";
 	cout << "^^ значения должны совпадать\n\n";
 	cout << "Равен ли первый вектор предпоследнему?: " << (vectors[0] == vectors[count - 2]) << "\n";
+	cout << "Векторное произведение [0]&[1]" << (vectors[0]&vectors[1]).ToString();
 
 	return 0;
 }

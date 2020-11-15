@@ -1,6 +1,42 @@
 ﻿#include "Vector.h"
 #include <string>
 
+double Vector::FindMatrixDeterminant(double** mainMatrix, int size)
+{
+	int i, j;
+
+	double determinant = 0;
+	double** newMatrix;
+
+	if (size == 1)
+	{
+		determinant = mainMatrix[0][0];
+	}
+	else if (size == 2)
+	{
+		determinant = mainMatrix[0][0] * mainMatrix[1][1] - mainMatrix[0][1] * mainMatrix[1][0];
+	}
+	else
+	{
+		newMatrix = new double* [size - 1];
+		for (i = 0; i < size; ++i)
+		{
+			for (j = 0; j < size - 1; ++j)
+			{
+				if (j < i) {
+					newMatrix[j] = mainMatrix[j];
+				}
+				else {
+					newMatrix[j] = mainMatrix[j + 1];
+				}
+			}
+			determinant += pow((double)-1, (i + j)) * FindMatrixDeterminant(newMatrix, size - 1) * mainMatrix[i][size - 1];
+		}
+		delete[] newMatrix;
+	}
+	return determinant;
+}
+
 Vector::Vector()
 {
 	Coords = nullptr;
@@ -130,7 +166,7 @@ Vector operator*(Vector leftOperand, double rightOperand)
 	return rightOperand * leftOperand;
 }
 
-// скалярное произведение
+// Скалярное произведение
 double operator*(Vector leftOperand, Vector rightOperand)
 {
 	double result = 0.0;
@@ -141,12 +177,32 @@ double operator*(Vector leftOperand, Vector rightOperand)
 	return result;
 }
 
-// TODO: векторное произведение
+// Векторное произведение (по определению, только для 3х мерного пространства)
 Vector operator&(Vector leftOperand, Vector rightOperand)
 {
 	double* newCoords = new double[leftOperand.CoordsCount];
+	double** intermediateCalcs = new double* [leftOperand.CoordsCount - 1];
 
+	for (int i = 0; i < leftOperand.CoordsCount - 1; i++)
+	{
+		intermediateCalcs[i] = new double[leftOperand.CoordsCount - 1];
+	}
 
+	int minor = 0;
+	for (size_t j = 0; j < leftOperand.CoordsCount; j++) // количество миноров
+	{
+		int idx = 0;
+		for (size_t i = 0; i < leftOperand.CoordsCount; i++)
+		{
+			if (i != minor) {
+				intermediateCalcs[0][idx] = leftOperand.Coords[i];
+				intermediateCalcs[1][idx] = rightOperand.Coords[i];
+				idx++;
+			}
+		}
+		minor++;
+		newCoords[j] = pow(-1.0, (2 + j)) * Vector::FindMatrixDeterminant(intermediateCalcs, leftOperand.CoordsCount - 1);
+	}
 
 	return Vector(newCoords, leftOperand.CoordsCount);
 }
@@ -188,40 +244,4 @@ bool operator<(Vector leftOperand, Vector rightOperand)
 bool operator<=(Vector leftOperand, Vector rightOperand)
 {
 	return leftOperand.GetLength() <= rightOperand.GetLength();
-}
-
-double Vector::FindMatrixDeterminant(double** mainMatrix, int size)
-{
-	int i, j;
-
-	double determinant = 0;
-	double** newMatrix;
-
-	if (size == 1)
-	{
-		determinant = mainMatrix[0][0];
-	}
-	else if (size == 2)
-	{
-		determinant = mainMatrix[0][0] * mainMatrix[1][1] - mainMatrix[0][1] * mainMatrix[1][0];
-	}
-	else
-	{
-		newMatrix = new double* [size - 1];
-		for (i = 0; i < size; ++i)
-		{
-			for (j = 0; j < size - 1; ++j)
-			{
-				if (j < i) {
-					newMatrix[j] = mainMatrix[j];
-				}
-				else {
-					newMatrix[j] = mainMatrix[j + 1];
-				}
-			}
-			determinant += pow((double)-1, (i + j)) * FindMatrixDeterminant(newMatrix, size - 1) * mainMatrix[i][size - 1];
-		}
-		delete[] newMatrix;
-	}
-	return determinant;
 }
