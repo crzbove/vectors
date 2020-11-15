@@ -133,6 +133,22 @@ double Vector::VectorsMixedProduct(Vector a, Vector b, Vector c)
 	return a * (b & c);
 }
 
+std::ostream& operator<<(std::ostream& out, const Vector& vector)
+{
+	out << "(";
+
+	for (int i = 0; i < vector.CoordsCount; i++)
+	{
+		out << vector.Coords[i];
+		if (i != vector.CoordsCount - 1) {
+			out << "; ";
+		}
+	}
+	out << ")";
+
+	return out;
+}
+
 Vector operator+(Vector leftOperand, Vector rightOperand)
 {
 	double* newCoords = new double[leftOperand.CoordsCount];

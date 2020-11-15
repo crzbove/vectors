@@ -31,6 +31,8 @@ public:
 	static bool CheckVectorsCoplanarity(Vector a, Vector b, Vector c);
 	static double VectorsMixedProduct(Vector a, Vector b, Vector c);
 
+	friend std::ostream& operator<< (std::ostream& out, const Vector& vector);
+
 	friend Vector operator+ (Vector leftOperand, Vector rightOperand);
 	friend Vector operator- (Vector leftOperand, Vector rightOperand);
 	friend Vector operator* (double leftOperand, Vector rightOperand);
