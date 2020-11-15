@@ -6,8 +6,6 @@ struct Point {
 	double* PointCoords;
 };
 
-// TODO: замена ToString() на operator <<
-
 class Vector
 {
 protected:
@@ -19,7 +17,7 @@ public:
 	Vector();
 	Vector(double*, unsigned int);
 	Vector(Point, Point);
-	std::string ToString();
+	//std::string ToString();
 
 	double GetLength();
 

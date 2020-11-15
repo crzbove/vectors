@@ -59,7 +59,7 @@ int main() {
 	cout << "\n\nВекторы:\n";
 	for (size_t i = 0; i < count; i++)
 	{
-		cout << vectors[i].ToString();
+		cout << vectors[i];
 		cout << "\n   Длина: " << vectors[i].GetLength() << "\n\n";
 	}
 
@@ -67,20 +67,22 @@ int main() {
 	cout << "\n\nВекторы (отсортированные):\n";
 	for (size_t i = 0; i < count; i++)
 	{
-		cout << vectors[i].ToString();
+		cout << vectors[i];
 		cout << "\n   Длина: " << vectors[i].GetLength() << "\n\n";
 	}
 
 	cout.setf(ios::boolalpha);
 	cout << "\n\nРезультаты тестирования:\n";
-	cout << "Сложение первого и последнего вектора: " << (vectors[0] + vectors[count - 1]).ToString() << "\n";
-	cout << "Вычитание первого и второго вектора: " << (vectors[0] - vectors[1]).ToString() << "\n";
+	cout << "Сложение первого и последнего вектора: " << (vectors[0] + vectors[count - 1]) << "\n";
+	cout << "Вычитание первого и второго вектора: " << (vectors[0] - vectors[1]) << "\n";
 	cout << "Скалярное произведение последнего и предпоследнего вектора: " << vectors[count - 1] * vectors[count - 2] << "\n";
 	cout << "Значение косинуса угла между первым и предпоследним вектором: " << vectors[0].FindCOSBetweenThisAnd(vectors[count - 2]) << "\n";
-	cout << "Первый вектор, умноженный на 3.55: " << (3.55 * vectors[0]).ToString() << " ?== " << (vectors[0] * 3.55).ToString() << "\n";
+	cout << "Первый вектор, умноженный на 3.55: " << (3.55 * vectors[0]) << " ?== " << (vectors[0] * 3.55) << "\n";
 	cout << "^^ значения должны совпадать\n\n";
 	cout << "Равен ли первый вектор предпоследнему?: " << (vectors[0] == vectors[count - 2]) << "\n";
-	cout << "Векторное произведение [0]&[1]" << (vectors[0]&vectors[1]).ToString();
+	cout << "Векторное произведение первого и последнего векторов" << (vectors[0] & vectors[count - 1])<<"\n";
+	cout << "Смешанное произведение первого, второго и предпоследнего векторов" << (Vector::VectorsMixedProduct(vectors[0], vectors[1], vectors[count - 2])) << "\n";
+	cout << "Векторное произведение вектора самого на себя (должно быть = 0-вектору): " << (vectors[0]&vectors[0]) << "\n";
 
 	return 0;
 }

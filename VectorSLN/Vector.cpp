@@ -64,18 +64,18 @@ Vector::Vector(Point pointA, Point pointB)
 	}
 }
 
-std::string Vector::ToString()
-{
-	std::string result = "(";
-
-	for (int i = 0; i < this->CoordsCount; i++)
-	{
-		result += std::to_string(this->Coords[i]) + "; ";
-	}
-	result += ")";
-
-	return result;
-}
+//std::string Vector::ToString()
+//{
+//	std::string result = "(";
+//
+//	for (int i = 0; i < this->CoordsCount; i++)
+//	{
+//		result += std::to_string(this->Coords[i]) + "; ";
+//	}
+//	result += ")";
+//
+//	return result;
+//}
 
 double Vector::GetLength() {
 	double result = 0.0;
