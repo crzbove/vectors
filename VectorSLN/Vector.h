@@ -26,6 +26,8 @@ public:
 	bool IsOrtogonalTo(Vector another);
 
 	double FindCOSBetweenThisAnd(Vector another);
+	static double FindCosBetweenVectors(Vector a, Vector b);
+
 	static bool CheckVectorsCoplanarity(Vector a, Vector b, Vector c);
 	static double VectorsMixedProduct(Vector a, Vector b, Vector c);
 

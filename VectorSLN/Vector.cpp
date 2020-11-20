@@ -1,5 +1,4 @@
 ﻿#include "Vector.h"
-#include <string>
 
 double Vector::FindMatrixDeterminant(double** mainMatrix, int size)
 {
@@ -51,17 +50,19 @@ Vector::Vector(double* Coords, unsigned int CoordsCount)
 
 Vector::Vector(Point pointA, Point pointB)
 {
-	if (pointA.PointCoordsCount == pointB.PointCoordsCount) {
-		double* VectorCoords = new double[pointA.PointCoordsCount];
-
-		for (int i = 0; i < pointA.PointCoordsCount; i++)
-		{
-			VectorCoords[i] = pointB.PointCoords[i] - pointA.PointCoords[i];
-		}
-
-		this->Coords = VectorCoords;
-		this->CoordsCount = pointA.PointCoordsCount;
+	if (pointA.PointCoordsCount != pointB.PointCoordsCount) {
+		throw std::exception("Размерность должна быть одинаковой.");
 	}
+
+	double* VectorCoords = new double[pointA.PointCoordsCount];
+
+	for (int i = 0; i < pointA.PointCoordsCount; i++)
+	{
+		VectorCoords[i] = pointB.PointCoords[i] - pointA.PointCoords[i];
+	}
+
+	this->Coords = VectorCoords;
+	this->CoordsCount = pointA.PointCoordsCount;
 }
 
 //std::string Vector::ToString()
@@ -121,6 +122,11 @@ double Vector::FindCOSBetweenThisAnd(Vector another)
 	return (*this * another) / (this->GetLength() * another.GetLength());
 }
 
+double Vector::FindCosBetweenVectors(Vector a, Vector b)
+{
+	return a.FindCOSBetweenThisAnd(b);
+}
+
 // Проверка компланарности векторов
 bool Vector::CheckVectorsCoplanarity(Vector a, Vector b, Vector c)
 {
@@ -151,6 +157,10 @@ std::ostream& operator<<(std::ostream& out, const Vector& vector)
 
 Vector operator+(Vector leftOperand, Vector rightOperand)
 {
+	if (leftOperand.CoordsCount != rightOperand.CoordsCount) {
+		throw std::exception("Разные размерности векторов.");
+	}
+
 	double* newCoords = new double[leftOperand.CoordsCount];
 
 	for (int i = 0; i < leftOperand.CoordsCount; i++)
@@ -162,6 +172,10 @@ Vector operator+(Vector leftOperand, Vector rightOperand)
 
 Vector operator-(Vector leftOperand, Vector rightOperand)
 {
+	if (leftOperand.CoordsCount != rightOperand.CoordsCount) {
+		throw std::exception("Разные размерности векторов.");
+	}
+
 	double* newCoords = new double[leftOperand.CoordsCount];
 
 	for (int i = 0; i < leftOperand.CoordsCount; i++)
@@ -191,6 +205,10 @@ Vector operator*(Vector leftOperand, double rightOperand)
 // Скалярное произведение
 double operator*(Vector leftOperand, Vector rightOperand)
 {
+	if (leftOperand.CoordsCount != rightOperand.CoordsCount) {
+		throw std::exception("Разные размерности векторов.");
+	}
+
 	double result = 0.0;
 	for (int i = 0; i < leftOperand.CoordsCount; i++)
 	{
@@ -202,6 +220,10 @@ double operator*(Vector leftOperand, Vector rightOperand)
 // Векторное произведение (по определению, только для 3х мерного пространства)
 Vector operator&(Vector leftOperand, Vector rightOperand)
 {
+	if ((leftOperand.CoordsCount == rightOperand.CoordsCount) && leftOperand.CoordsCount != 3) {
+		throw std::exception("Только для трёхмерных вектров.");
+	}
+
 	double* newCoords = new double[leftOperand.CoordsCount];
 	double** intermediateCalcs = new double* [leftOperand.CoordsCount - 1];
 
