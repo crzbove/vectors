@@ -35,6 +35,7 @@ public:
 
 	friend Vector operator+ (Vector leftOperand, Vector rightOperand);
 	friend Vector operator- (Vector leftOperand, Vector rightOperand);
+	friend Vector operator- (Vector operand);
 	friend Vector operator* (double leftOperand, Vector rightOperand);
 	friend Vector operator* (Vector leftOperand, double rightOperand);
 

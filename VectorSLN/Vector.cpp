@@ -185,6 +185,18 @@ Vector operator-(Vector leftOperand, Vector rightOperand)
 	return Vector(newCoords, leftOperand.CoordsCount);
 }
 
+Vector operator-(Vector operand)
+{
+	double* newCoords = new double[operand.CoordsCount];
+
+	for (int i = 0; i < operand.CoordsCount; i++)
+	{
+		newCoords[i] = -operand.Coords[i];
+	}
+
+	return Vector(newCoords, operand.CoordsCount);
+}
+
 Vector operator*(double leftOperand, Vector rightOperand)
 {
 	double* newCoords = new double[rightOperand.CoordsCount];
