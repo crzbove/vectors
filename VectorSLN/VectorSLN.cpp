@@ -6,7 +6,8 @@ int main() {
 
 	setlocale(LC_ALL, "Russian");
 
-	int size = 0, userChoice = -1, count = 0;
+	unsigned int size = 0, count = 0;
+	int userChoice = -1;
 	Point* points = new Point[2];
 
 	cout << "Введите размерность вектора: ";
@@ -76,13 +77,13 @@ int main() {
 	cout << "Сложение первого и последнего вектора: " << (vectors[0] + vectors[count - 1]) << "\n";
 	cout << "Вычитание первого и второго вектора: " << (vectors[0] - vectors[1]) << "\n";
 	cout << "Скалярное произведение последнего и предпоследнего вектора: " << vectors[count - 1] * vectors[count - 2] << "\n";
-	cout << "Значение косинуса угла между первым и предпоследним вектором: " << vectors[0].FindCOSBetweenThisAnd(vectors[count - 2]) << "\n";
+	cout << "Значение косинуса угла между вторым и предпоследним вектором: " << vectors[1].FindCOSBetweenThisAnd(vectors[count - 2]) << "\n";
 	cout << "Первый вектор, умноженный на 3.55: " << (3.55 * vectors[0]) << " ?== " << (vectors[0] * 3.55) << "\n";
 	cout << "^^ значения должны совпадать\n\n";
 	cout << "Равен ли первый вектор предпоследнему?: " << (vectors[0] == vectors[count - 2]) << "\n";
-	cout << "Векторное произведение первого и последнего векторов" << (vectors[0] & vectors[count - 1])<<"\n";
+	cout << "Векторное произведение первого и последнего векторов" << (vectors[0] & vectors[count - 1]) << "\n";
 	cout << "Смешанное произведение первого, второго и предпоследнего векторов" << (Vector::VectorsMixedProduct(vectors[0], vectors[1], vectors[count - 2])) << "\n";
-	cout << "Векторное произведение вектора самого на себя (должно быть = 0-вектору): " << (vectors[0]&vectors[0]) << "\n";
+	cout << "Векторное произведение вектора самого на себя (должно быть = 0-вектору): " << (vectors[0] & vectors[0]) << "\n";
 
 	return 0;
 }

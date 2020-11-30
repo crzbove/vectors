@@ -65,19 +65,6 @@ Vector::Vector(Point pointA, Point pointB)
 	this->CoordsCount = pointA.PointCoordsCount;
 }
 
-//std::string Vector::ToString()
-//{
-//	std::string result = "(";
-//
-//	for (int i = 0; i < this->CoordsCount; i++)
-//	{
-//		result += std::to_string(this->Coords[i]) + "; ";
-//	}
-//	result += ")";
-//
-//	return result;
-//}
-
 double Vector::GetLength() {
 	double result = 0.0;
 
@@ -127,13 +114,11 @@ double Vector::FindCosBetweenVectors(Vector a, Vector b)
 	return a.FindCOSBetweenThisAnd(b);
 }
 
-// Проверка компланарности векторов
 bool Vector::CheckVectorsCoplanarity(Vector a, Vector b, Vector c)
 {
 	return VectorsMixedProduct(a, b, c) == 0;
 }
 
-// Смешанное произведение
 double Vector::VectorsMixedProduct(Vector a, Vector b, Vector c)
 {
 	return a * (b & c);
@@ -207,7 +192,6 @@ Vector operator*(Vector leftOperand, double rightOperand)
 	return rightOperand * leftOperand;
 }
 
-// Скалярное произведение
 double operator*(Vector leftOperand, Vector rightOperand)
 {
 	if (leftOperand.CoordsCount != rightOperand.CoordsCount) {
@@ -222,7 +206,6 @@ double operator*(Vector leftOperand, Vector rightOperand)
 	return result;
 }
 
-// Векторное произведение (по определению, только для 3х мерного пространства)
 Vector operator&(Vector leftOperand, Vector rightOperand)
 {
 	if ((leftOperand.CoordsCount == rightOperand.CoordsCount) && leftOperand.CoordsCount != 3) {
@@ -238,10 +221,10 @@ Vector operator&(Vector leftOperand, Vector rightOperand)
 	}
 
 	int minor = 0;
-	for (size_t j = 0; j < leftOperand.CoordsCount; j++) // количество миноров
+	for (int j = 0; j < leftOperand.CoordsCount; j++) // количество миноров
 	{
 		int idx = 0;
-		for (size_t i = 0; i < leftOperand.CoordsCount; i++)
+		for (int i = 0; i < leftOperand.CoordsCount; i++)
 		{
 			if (i != minor) {
 				intermediateCalcs[0][idx] = leftOperand.Coords[i];
@@ -256,10 +239,6 @@ Vector operator&(Vector leftOperand, Vector rightOperand)
 	return Vector(newCoords, leftOperand.CoordsCount);
 }
 
-// По определению:
-// Два вектора называются равными тогда и только тогда, когда:
-// 1) Они имеют одинаковое число координат
-// 2) Соответствующие координаты равны между собой.
 bool operator==(Vector leftOperand, Vector rightOperand)
 {
 	if (leftOperand.CoordsCount != rightOperand.CoordsCount) {
