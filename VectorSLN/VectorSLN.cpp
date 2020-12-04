@@ -27,10 +27,10 @@ int main() {
 
 		switch (userChoice) {
 		case 1:
-			for (size_t p = 0; p < 2; p++)
+			for (int p = 0; p < 2; p++)
 			{
 				coords = new double[size];
-				for (size_t s = 0; s < size; s++)
+				for (int s = 0; s < size; s++)
 				{
 					cout << "Введите " << s + 1 << "-ю координату " << p + 1 << " точки: ";
 					cin >> coords[s];
@@ -58,7 +58,7 @@ int main() {
 	}
 
 	cout << "\n\nВекторы:\n";
-	for (size_t i = 0; i < count; i++)
+	for (int i = 0; i < count; i++)
 	{
 		cout << vectors[i];
 		cout << "\n   Длина: " << vectors[i].GetLength() << "\n\n";
@@ -66,7 +66,7 @@ int main() {
 
 	QuickSort<Vector>(vectors, count);
 	cout << "\n\nВекторы (отсортированные):\n";
-	for (size_t i = 0; i < count; i++)
+	for (int i = 0; i < count; i++)
 	{
 		cout << vectors[i];
 		cout << "\n   Длина: " << vectors[i].GetLength() << "\n\n";
@@ -82,8 +82,10 @@ int main() {
 	cout << "^^ значения должны совпадать\n\n";
 	cout << "Равен ли первый вектор предпоследнему?: " << (vectors[0] == vectors[count - 2]) << "\n";
 	cout << "Векторное произведение первого и последнего векторов" << (vectors[0] & vectors[count - 1]) << "\n";
-	cout << "Смешанное произведение первого, второго и предпоследнего векторов" << (Vector::VectorsMixedProduct(vectors[0], vectors[1], vectors[count - 2])) << "\n";
+	cout << "Смешанное произведение первого, второго и предпоследнего векторов: " << (Vector::VectorsMixedProduct(vectors[0], vectors[1], vectors[count - 2])) << "\n";
 	cout << "Векторное произведение вектора самого на себя (должно быть = 0-вектору): " << (vectors[0] & vectors[0]) << "\n";
+
+	delete[] coords, vectors, points;
 
 	return 0;
 }
